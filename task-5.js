@@ -14,4 +14,4 @@ function updateValue(event) {
   span.textContent = event.target.value;
 }
 
-input.addEventListener('input', updateValue)
+input.addEventListener('change', updateValue)

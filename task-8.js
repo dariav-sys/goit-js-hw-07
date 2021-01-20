@@ -17,7 +17,7 @@
 
 <div id="boxes"></div> */
 
-// const amount = document.querySelector('[type="number"]');
+
 
 
 const create = document.querySelector('[data-action="render"]');
@@ -40,12 +40,15 @@ function createBoxes(amount) {
   for (let i = 0; i < amount; i++) {
     const div = document.createElement('div');
     boxes.append(div);
-    const nextSize = firstBoxSize + i * 10;
-    // const random = Math.round(Math.random() * 256);
-    div.style.cssText = `width: ${nextSize}px; height: ${nextSize}px;   
-  background-color: rgba( ${Math.round(Math.random() * 256)} , ${Math.round(Math.random() * 256)} , ${Math.round(Math.random() * 256)})`;
+    const nextSize = firstBoxSize + i * 10;    
+    const random1 = Math.round(Math.random() * 256); 
+    const random2 = Math.round(Math.random() * 256); 
+    const random3 = Math.round(Math.random() * 256); 
+    div.style.cssText = `width: ${nextSize}px; height: ${nextSize}px;
+       
+  background-color: rgba( ${random1} , ${random2} , ${random3})`;
   };
-  console.log(boxes);
+  // console.log(boxes);
 };
 
 function destroyBoxes() {
