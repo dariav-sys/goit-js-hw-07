@@ -24,6 +24,8 @@
 
 const input = document.querySelector('#validation-input');
 
+const dataSetLength = +input.getAttribute('data-length')
+
 
 console.log(input.getAttribute('data-length'))
 
@@ -32,7 +34,7 @@ console.log(input.getAttribute('data-length'))
 
 input.addEventListener('blur', (event) => {
   console.log(event.target.value.length)
-  if (event.target.value.length === +input.getAttribute('data-length')) {
+  if (event.target.value.length === dataSetLength) {
     input.classList.add('valid');
     return;
   }

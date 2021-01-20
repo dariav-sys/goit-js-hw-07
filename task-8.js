@@ -22,7 +22,11 @@
 
 const create = document.querySelector('[data-action="render"]');
 const destroy = document.querySelector('[data-action="destroy"]');
-const boxes = document.querySelector('#boxes');
+const containerRef = document.querySelector('#boxes');
+
+const amount = document.querySelector('#controls input');
+console.log(amount)
+
 
 create.addEventListener('click', createCollection);
 destroy.addEventListener('click', destroyBoxes);
@@ -30,30 +34,36 @@ destroy.addEventListener('click', destroyBoxes);
 
 
 function createCollection() {
-  const amount = document.querySelector('input').value;
-  // console.log(document.querySelector('input').value)
+  const amount = document.querySelector('input').value;  
   createBoxes(amount);
 }
 
-function createBoxes(amount) {
-  const firstBoxSize = 30;
-  for (let i = 0; i < amount; i++) {
-    const div = document.createElement('div');
-    boxes.append(div);
-    const nextSize = firstBoxSize + i * 10;    
-    const random1 = Math.round(Math.random() * 256); 
-    const random2 = Math.round(Math.random() * 256); 
-    const random3 = Math.round(Math.random() * 256); 
-    div.style.cssText = `width: ${nextSize}px; height: ${nextSize}px;
-       
-  background-color: rgba( ${random1} , ${random2} , ${random3})`;
-  };
-  // console.log(boxes);
-};
 
-function destroyBoxes() {
-  boxes.innerHTML = '';
+
+function createBoxes(amount) {
+  let firstBoxSize = 30;
+  let boxes = document.createDocumentFragment();
+  for (let i = 0; i < amount; i++) {
+    const div = document.createElement('div'); 
+    div.style.width = firstBoxSize + 'px';
+    div.style.height = firstBoxSize + 'px';
+    div.style.border = '1px solid grey';
+    div.style.backgroundColor = randomColor();  
+    boxes.appendChild(div);
+    firstBoxSize += 10; 
+  };
+  containerRef.appendChild(boxes);  
 }
 
+function destroyBoxes() {
+  containerRef.innerHTML = '';
+}
+
+function randomColor() {
+  const red= Math.round(Math.random() * 256); 
+  const green = Math.round(Math.random() * 256); 
+  const blue = Math.round(Math.random() * 256); 
+  return `rgb(${red},${green},${blue})`
+}
 
 
